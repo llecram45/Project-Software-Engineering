@@ -1,3 +1,5 @@
 aedjre
 testing 123
 !!!!
+
+testing buat ngedit, ok
