@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo img {
+    height: auto;
+    width: 50%;
+}
+
+.logo span {
+    color: blue;
+}
+
+input[type="text"] {
+    width: 40%;
+    margin-left: -200px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.icons span {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: yellow;
+}
+
+.intro img {
+    width: 50%;
+    max-width: 600px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.description {
+    flex: 1;
+    padding: 20px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.category {
+    text-align: center;
+}
+
+.category img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+footer {
+    background: #3b5998;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.info, .social, .contact {
+    width: 25%;
+}
