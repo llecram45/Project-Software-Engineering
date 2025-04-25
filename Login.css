@@ -1,0 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f8f8;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo img {
+    height: auto;
+    width: 50%;
+}
+
+.logo span {
+    color: blue;
+}
+
+.container {
+    margin-top: 70px;
+    margin-left: 230px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    font-size: 35px;
+}
+
+.options a {
+    font-size: 14px;
+}
+
+.left {
+    width: 40%;
+    margin-bottom: 50px;
+}
+
+.left h1 {
+    font-size: 70px;
+    color: black;
+}
+
+.right {
+    width: 35%;
+    margin-top: 50px;
+    margin-right: 180px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.checkbox input {
+    margin-right: 5px;
+}
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: white;
+}
+
+button[type="submit"] {
+    background-color: blue;
+    color: white;
+    border-radius: 50px;
+    border: 1px solid #000;
+    margin-top: 15px;
+    box-shadow: none; 
+}
+
+button[type="button"] {
+    color: black;
+    font-weight: bold;
+    border-radius: 50px;
+    border: 1px solid #000;
+    margin-top: 15px;
+    box-shadow: none; 
+}
+
+#loginPage {
+    background: none;
+    border: 1px solid black;
+    color: black;
+}
+
+footer {
+    background: #3b5998;
+    color: white;
+    padding: 20px;
+    display: flex;
+    margin-top: 75px;
+    font-size: 18px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.info, .social, .contact {
+    width: 25%;
+}
+
+.option a {
+    margin-top: 10%;
+}
+
+.logofooter {
+    margin-left: 90px;
+    margin-top: 70px;
+}
+
+.logofooter img {
+    height: 40%;
+    width: auto;
+}
+
+.company {
+    margin-left: 200px;
+}
+
+.social {
+    margin-left: 200px;
+}
+
+.social a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: #ddd;
+}
+
+.social i {
+    font-size: 20px;
+}
+
+.contact {
+    margin-left: 10px;
+}
+
+.logofooter .copyright-text {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.copyright{
+    margin-left: 70px;
+}
