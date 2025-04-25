@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customify</title>
     <link rel="stylesheet" href="Home.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <header>
         <div class="logo">
             <img src="asset customify/logo customify.png">
         </div>
-        <input type="text" placeholder="Cari...">
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input type="text" placeholder="Cari...">
+        </div>
         <div class="icons">
-            <span>🛒</span> <!-- Cart -->
-            <span>👤</span> <!-- User -->
-            <span>💬</span> <!-- Chat -->
+            <ion-icon name="cart-outline"></ion-icon>
+            <ion-icon name="person-circle"></ion-icon>
+            <ion-icon name="chatbubbles-outline"></ion-icon>
         </div>
     </header>
     
@@ -36,19 +41,31 @@
     <section class="categories">
         <div class="category">
             <img src="asset customify/sablon kaos.webp" alt="Pakaian dan Merchandise">
-            <p>Pakaian dan Merchandise</p>
+            <div class="category-label">
+                <p>Pakaian dan Merchandise</p>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
         </div>
         <div class="category">
             <img src="asset customify/souvenir.jpg" alt="Souvenir">
-            <p>Souvenir</p>
+            <div class="category-label">
+                <p>Souvenir</p>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
         </div>
         <div class="category">
             <img src="asset customify/custom case.webp" alt="Aksesoris Elektronik">
-            <p>Aksesoris Elektronik</p>
+            <div class="category-label">
+                <p>Aksesoris Elektronik</p>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
         </div>
         <div class="category">
             <img src="asset customify/furnitur.jpeg" alt="Furnitur">
-            <p>Furnitur</p>
+            <div class="category-label">
+                <p>Furnitur</p>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
         </div>
     </section>
     
