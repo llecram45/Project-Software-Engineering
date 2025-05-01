@@ -68,7 +68,7 @@ form {
 
 label {
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 2px;
 }
 
 input {
@@ -125,7 +125,7 @@ footer {
     color: white;
     padding: 20px;
     display: flex;
-    margin-top: 75px;
+    margin-top: 97px;
     font-size: 18px;
 }
 
