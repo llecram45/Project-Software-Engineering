@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Merchant - Customify</title>
+  <link rel="stylesheet" href="Home.css"/>
+  <link rel="stylesheet" href="merchant.css"/>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="asset customify/logo customify.png">
+    </div>
+    <div class="search-box">
+      <ion-icon name="search-outline"></ion-icon>
+      <input type="text" id="searchInput" placeholder="Cari..." onkeyup="searchSuggestions()">
+      <div id="suggestions" class="suggestions-box"></div>
+    </div>
+    <div class="icons">
+      <a href="Cart.html"><ion-icon name="cart-outline"></ion-icon></a>
+      <a href="Profile.html"><ion-icon name="person-circle-outline"></ion-icon></a>
+      <a href="Chat.html"><ion-icon name="chatbubbles-outline"></ion-icon></a>
+    </div>
+  </header>
+
+  <section class="merchant-profile">
+    <img src="asset customify/logo customify.png" class="merchant-logo" alt="Merchant Logo">
+    <div class="merchant-info">
+      <h2>DIAMOND ACC</h2>
+      <p>Aktif 19 menit lalu</p>
+      <div class="merchant-stats">
+        <span>Produk: <b>446</b></span>
+        <span>Pengikut: <b>3.1RB</b></span>
+        <span>Penilaian: <b>4.8 (36,1RB)</b></span>
+        <span>Bergabung: <b>6 Tahun Lalu</b></span>
+      </div>
+      <div class="merchant-actions">
+        <button class="follow-btn">+ Ikuti</button>
+        <button class="chat-btn">Chat</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-list">
+    <h2>Produk Unggulan</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="asset customify/stik-ps4.jpg" alt="Stik PS4">
+        <p>Stik PS4 Lightbar + Kabel</p>
+        <span class="price">Rp96.000</span>
+      </div>
+      <div class="product-card">
+        <img src="asset customify/karet-tombol.jpg" alt="Karet Tombol">
+        <p>Karet Tombol Full Set PS4</p>
+        <span class="price">Rp3.500</span>
+      </div>
+      <div class="product-card">
+        <img src="asset customify/holder.jpg" alt="Phone Holder">
+        <p>Phone Clamp Game Holder</p>
+        <span class="price">Rp35.000</span>
+      </div>
+      <div class="product-card">
+        <img src="asset customify/silicon-analog.jpg" alt="Silicon Analog">
+        <p>Silicon Analog PS Series</p>
+        <span class="price">Rp2.000</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logofooter">
+      <img src="asset customify/logo customify.png" alt="Customify Logo">
+      <div class="copyright">
+        <p>&copy; 2025 Customify<br>All rights reserved.</p>
+      </div>
+    </div>
+    <div class="company">
+      <h4>Company</h4>    
+      <p>About Us</p>
+      <p>Produk</p>
+    </div>
+    <div class="social">
+      <h4>Follow Us</h4>
+      <p><i class="fab fa-x-twitter"></i> Twitter</p>
+      <p><i class="fab fa-instagram"></i> Instagram</p>
+      <p><i class="fab fa-facebook"></i> Facebook</p>
+    </div>
+    <div class="contact">
+      <h4>Contacts</h4>
+      <p>📞 (+62) 87965425</p>
+      <p>📧 customify.com</p>
+      <p>📍 Jakarta, Daerah Khusus Ibukota</p>
+    </div>
+  </footer>
+
+  <script src="merchant.js"></script>
+</body>
+</html>
