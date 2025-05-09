@@ -109,157 +109,152 @@ h2 {
     border-bottom: 1px solid #ccc;
   }
   
-  .merchant-logo {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 30px;
-  }
+.merchant-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 30px;
+}
   
-  .merchant-info h2 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .merchant-stats {
-    margin: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 16px;
-  }
-  
-  .merchant-actions {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .follow-btn, .chat-btn {
-    padding: 10px 20px;
-    border: none;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .follow-btn {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .chat-btn {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .product-list {
-    padding: 30px;
-    background-color: #f9f9f9;
-  }
-  
-  .products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: flex-start;
-  }
-  
-  .product-card {
-    background-color: white;
-    width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: 15px;
-    text-align: center;
-  }
-  
-  .product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border-radius: 8px;
-  }
-  
-  .product-card p {
-    margin: 10px 0 5px;
-    font-weight: 500;
-  }
-  
-  .product-card .price {
-    color: #e53935;
-    font-weight: bold;
-  }
-
-  footer {
-    background: #3b5998;
-    color: white;
-    padding: 0px;
-    display: flex;
-    font-size: 18px;
-    margin-top: 106px;
+.merchant-info h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+.merchant-stats {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 16px;
 }
 
-.info, .social, .contact {
-    width: 25%;
+.merchant-actions {
+  display: flex;
+  gap: 15px;
 }
 
-.logofooter {
-    margin-left: 90px;
-    margin-top: 70px;
+.follow-btn, .chat-btn {
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.logofooter img {
-    height: 40%;
-    width: auto;
+.follow-btn {
+  background-color: #007bff;
+  color: white;
 }
 
-.company {
-    margin-left: 200px;
+.chat-btn {
+  background-color: #28a745;
+  color: white;
 }
 
-.social {
-    margin-left: 200px;
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
 }
 
-.social a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-size: 16px;
-    transition: color 0.3s;
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  width: 220px;
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.social a:hover {
-    color: #ddd;
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 8px;
 }
 
-.social i {
-    font-size: 20px;
+.product-card:hover {
+  transform: scale(1.03);
 }
 
-.contact {
-    margin-left: 10px;
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
 }
 
-.logofooter .copyright-text {
-    font-size: 14px;
-    color: #ccc;
-    margin-top: 10px;
-    text-align: center;
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
 }
 
-.copyright{
-    margin-left: 70px;
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.styled-modal input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.styled-modal button {
+  background-color: #673ab7;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.loading {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
