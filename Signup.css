@@ -9,8 +9,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f8f8f8;
     padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -19,42 +20,37 @@ header {
 }
 
 .logo img {
-    height: auto;
-    width: 50%;
+    height: 45px;
+    width: auto;
 }
 
 .logo span {
     color: blue;
 }
 
+.icons span {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 .container {
-    margin-top: 33px;
-    margin-left: 230px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 40px;
-    font-size: 35px;
-}
-
-.options a {
-    font-size: 14px;
 }
 
 .left {
     width: 40%;
-    margin-bottom: 50px;
 }
 
 .left h1 {
-    font-size: 70px;
+    font-size: 36px;
     color: black;
 }
 
 .right {
-    width: 35%;
-    margin-top: 50px;
-    margin-right: 180px;
+    width: 50%;
     background: white;
     padding: 30px;
     border-radius: 8px;
@@ -68,14 +64,23 @@ form {
 
 label {
     font-size: 14px;
-    margin-top: 2px;
+    margin-top: 10px;
 }
 
 input {
+    width: 40%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+input[type="text"] {
+    width: 40%;
+    margin-top: 0px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
 }
 
 .checkbox {
@@ -90,28 +95,15 @@ input {
 
 button {
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 15px;
+    border: none;
     cursor: pointer;
-    border-radius: 50px;
-    background-color: white;
+    border-radius: 5px;
 }
 
 button[type="submit"] {
-    background-color: blue;
+    background: blue;
     color: white;
-    border-radius: 50px;
-    border: 1px solid #000;
-    margin-top: 15px;
-    box-shadow: none; 
-}
-
-button[type="button"] {
-    color: black;
-    font-weight: bold;
-    border-radius: 50px;
-    border: 1px solid #000;
-    margin-top: 15px;
-    box-shadow: none; 
 }
 
 #loginPage {
@@ -125,8 +117,8 @@ footer {
     color: white;
     padding: 20px;
     display: flex;
-    margin-top: 58px;
-    font-size: 18px;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 .footer-content {
@@ -137,60 +129,4 @@ footer {
 
 .info, .social, .contact {
     width: 25%;
-}
-
-.option a {
-    margin-top: 10%;
-}
-
-.logofooter {
-    margin-left: 90px;
-    margin-top: 70px;
-}
-
-.logofooter img {
-    height: 40%;
-    width: auto;
-}
-
-.company {
-    margin-left: 200px;
-}
-
-.social {
-    margin-left: 200px;
-}
-
-.social a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-
-.social a:hover {
-    color: #ddd;
-}
-
-.social i {
-    font-size: 20px;
-}
-
-.contact {
-    margin-left: 10px;
-}
-
-.logofooter .copyright-text {
-    font-size: 14px;
-    color: #ccc;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.copyright{
-    margin-left: 70px;
 }
