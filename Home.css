@@ -59,78 +59,78 @@ header {
 }
 
 footer {
-  background: #3b5998;
-  color: white;
-  padding: 20px;
-  display: flex;
-  margin-top: 75px;
-  font-size: 18px;
+    background: #3b5998;
+    color: white;
+    padding: 20px;
+    display: flex;
+    margin-top: 97px;
+    font-size: 18px;
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .info, .social, .contact {
-  width: 25%;
+    width: 25%;
 }
 
 .option a {
-  margin-top: 10%;
+    margin-top: 10%;
 }
 
 .logofooter {
-  margin-left: 90px;
-  margin-top: 70px;
+    margin-left: 90px;
+    margin-top: 70px;
 }
 
 .logofooter img {
-  height: 40%;
-  width: auto;
+    height: 40%;
+    width: auto;
 }
 
 .company {
-  margin-left: 200px;
+    margin-left: 200px;
 }
 
 .social {
-  margin-left: 200px;
+    margin-left: 200px;
 }
 
 .social a {
-  text-decoration: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-size: 16px;
-  transition: color 0.3s;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    transition: color 0.3s;
 }
 
 .social a:hover {
-  color: #ddd;
+    color: #ddd;
 }
 
 .social i {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .contact {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .logofooter .copyright-text {
-  font-size: 14px;
-  color: #ccc;
-  margin-top: 10px;
-  text-align: center;
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .copyright{
-  margin-left: 70px;
+    margin-left: 70px;
 }
 
 .icons {
