@@ -20,8 +20,8 @@ header {
 }
 
 .logo img {
-    height: auto;
-    width: 50%;
+    height: 45px;
+    width: auto;
 }
 
 input[type="text"] {
