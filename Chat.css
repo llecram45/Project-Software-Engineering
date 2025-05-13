@@ -1,0 +1,287 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo img {
+  height: auto;
+  width: 50%;
+}
+
+.logo span {
+  color: blue;
+}
+
+.icons span {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  padding: 6px 12px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+.search-box ion-icon {
+  font-size: 18px;
+  color: #666;
+  margin-right: 6px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 0;
+  flex: 1;
+  background: transparent;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: yellow;
+  gap: 20px;
+}
+
+.intro img {
+  width: 50%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.description {
+  flex: 1;
+  padding: 20px;
+}
+
+.description p {
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: bold;
+  color: #000;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.category img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.category-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.category-label p {
+  margin: 0;
+  font-size: 20px;
+  text-align: left;
+}
+
+.category-label ion-icon {
+  font-size: 16px;
+  color: #666;
+}
+
+.category ion-icon {
+  font-size: 32px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.category ion-icon:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  background: #3b5998;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info, .social, .contact {
+  width: 25%;
+}
+
+.icons ion-icon {
+  font-size: 32px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  color: black;
+}
+
+.icons ion-icon:hover {
+  transform: scale(1.2);
+}
+
+h2 {
+  padding: 0 24px;
+}
+
+/* Chat popup */
+.chat-popup {
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  right: 30px;
+  width: 965px;
+  max-height: 80vh;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.chat-popup.hidden {
+  display: none;
+}
+
+/* Responsif */
+@media (max-width: 1000px) {
+  .chat-popup {
+    width: 90%;
+    top: 5%;
+    bottom: 5%;
+  }
+}
+
+/* Header popup */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  padding: 10px;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Tombol tutup */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Search bar dalam chat */
+.chat-search-container {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.chat-search-container .search-box {
+  max-width: 319px;
+}
+
+/* Body isi chat */
+.chat-body.multi-view {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+.chat-list {
+  width: 30%;
+  border-right: 1px solid #ccc;
+  background: #f9f9f9;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-conversation {
+  width: 70%;
+  padding: 10px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.chat-input {
+  display: none;
+}
+
+/* Tampilan chat kosong */
+.chat-conversation.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #444;
+  padding: 40px;
+  font-family: sans-serif;
+}
+
+.chat-conversation.empty h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.chat-conversation.empty p {
+  font-size: 16px;
+}
