@@ -220,6 +220,20 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+
+.styled-modal textarea {
+  width: 100%;              /* Menyamakan lebar dengan input lainnya */
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: none;         /* Memungkinkan user memperbesar tinggi secara manual */
+  box-sizing: border-box;   /* Pastikan padding masuk hitungan lebar */
+  font-family: inherit;
+  font-size: 14px;
+  min-height: 80px;         /* Awal tinggi textarea */
+  line-height: 1.5;
+}
+
 .styled-modal button {
   background-color: #673ab7;
   color: white;
