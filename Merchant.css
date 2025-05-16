@@ -1,112 +1,112 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   }
   
 a {
-    color: #3498db;
-    text-decoration: none;
+  color: #3498db;
+  text-decoration: none;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f8f8f8;
-    padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 10px 20px;
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .logo img {
-    height: 45px;
-    width: auto;
+  height: 45px;
+  width: auto;
 }
 
 .logo span {
-    color: blue;
+  color: blue;
 }
 
 .icons {
-    display: flex;
-    align-items: center;
-    gap: 30px; 
-  }
-  
+  display: flex;
+  align-items: center;
+  gap: 30px; 
+}
+
 .icons ion-icon {
-    font-size: 32px;
-    color: black;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
+  font-size: 32px;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
 .icons ion-icon:hover {
-    transform: scale(1.2);
-  }
+  transform: scale(1.2);
+}
 
 h2 {
-    padding: 0 24px;
+  padding: 0 24px;
 }
 
 .search-box {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 8px 14px; 
-    border-radius: 25px;
-    width: 1000px; 
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 8px 14px; 
+  border-radius: 25px;
+  width: 1000px; 
 }
   
 .search-box ion-icon {
-    font-size: 18px;
-    color: #666;
-    margin-right: 6px; 
-  }
+  font-size: 18px;
+  color: #666;
+  margin-right: 6px; 
+}
   
 .search-box input {
-    border: none;
-    outline: none;
-    font-size: 18px;
-    padding: 0;
-    flex: 1; 
-    background: transparent;
-  }
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 0;
+  flex: 1; 
+  background: transparent;
+}
   
 .suggestions-box {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    border: 1px solid #ccc;
-    z-index: 100;
-    max-height: 200px;
-    overflow-y: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 100;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
 }
   
 .suggestions-box div {
     padding: 10px;
     cursor: pointer;
-  }
+}
   
 .suggestions-box div:hover {
   background-color: #f0f0f0;
 }
 
 .merchant-profile {
-    display: flex;
-    align-items: center;
-    padding: 30px;
-    background-color: white;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
   }
   
 .merchant-logo {
@@ -274,88 +274,71 @@ h2 {
 }
 
 footer {
-    background: #3b5998;
-    color: white;
-    padding: 20px;
-    display: flex;
-    margin-top: 97px;
-    font-size: 18px;
+  background: #3b5998;
+  color: white;
+  padding: 20px;
+  display: flex;
+  margin-top: 97px;
+  font-size: 18px;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .info, .social, .contact {
-    width: 25%;
+  width: 25%;
 }
 
 .option a {
-    margin-top: 10%;
+  margin-top: 10%;
 }
 
 .logofooter {
-    margin-left: 90px;
-    margin-top: 70px;
+  margin-left: 90px;
+  margin-top: 70px;
 }
 
 .company {
-    margin-left: 200px;
+  margin-left: 200px;
 }
 
 .social {
-    margin-left: 200px;
+  margin-left: 200px;
 }
 
 .social a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-size: 16px;
-    transition: color 0.3s;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  transition: color 0.3s;
 }
 
 .social a:hover {
-    color: #ddd;
+  color: #ddd;
 }
 
 .social i {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .contact {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .logofooter .copyright-text {
-    font-size: 14px;
-    color: #ccc;
-    margin-top: 10px;
-    text-align: center;
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .copyright{
-    margin-left: 70px;
-}
-
-.icons {
-  display: flex;
-  align-items: center;
-  gap: 30px; 
-}
-
-.icons ion-icon {
-  font-size: 32px;
-  color: black;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.icons ion-icon:hover {
-  transform: scale(1.2);
+  margin-left: 70px;
 }
