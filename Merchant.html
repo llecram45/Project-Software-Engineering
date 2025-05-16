@@ -57,9 +57,11 @@
       <h3>Tambah Produk Baru</h3>
       <form id="uploadForm">
         <label>Nama Produk</label><br>
-        <input type="text" id="productName" required><br><br>
+        <input type="text" id="productName" placeholder="Masukkan Nama Produk.." required><br><br>
         <label>Harga Produk (Rp)</label><br>
-        <input type="number" id="productPrice" required><br><br>
+        <input type="number" id="productPrice" placeholder="Masukkan Harga Produk.." required><br><br>
+        <label>Deskripsi Produk</label><br>
+        <textarea id="productDesc" placeholder="Masukkan Deskripsi Produk..." required></textarea><br><br>
         <label>Gambar Produk (max. 1 MB)</label><br>
         <input type="file" id="productImage" accept="image/*" required><br><br>
         <button type="submit">Tambahkan Produk</button>
@@ -71,31 +73,31 @@
   <!-- Notifikasi -->
   <div id="notification" class="notification" style="display: none;"></div>
 
-  <footer>
-    <div class="logofooter">
-      <img src="asset customify/logo customify.png" alt="Customify Logo">
-      <div class="copyright">
-        <p>&copy; 2025 Customify<br>All rights reserved.</p>
-      </div>
+<footer>
+  <div class="logofooter">
+    <img src="asset customify/logo customify.png" alt="Customify Logo">
+    <div class="copyright">
+      <p>&copy; 2025 Customify<br>All rights reserved.</p>
     </div>
-    <div class="company">
-      <h4>Company</h4>    
-      <p>About Us</p>
-      <p>Produk</p>
-    </div>
-    <div class="social">
-      <h4>Follow Us</h4>
-      <p><i class="fab fa-x-twitter"></i> Twitter</p>
-      <p><i class="fab fa-instagram"></i> Instagram</p>
-      <p><i class="fab fa-facebook"></i> Facebook</p>
-    </div>
-    <div class="contact">
-      <h4>Contacts</h4>
-      <p>📞 (+62) 87965425</p>
-      <p>📧 customify.com</p>
-      <p>📍 Jakarta, Daerah Khusus Ibukota</p>
-    </div>
-  </footer>
+  </div>
+  <div class="company">
+    <h4>Company</h4>    
+    <p>About Us</p>
+    <p>Produk</p>
+  </div>
+  <div class="social">
+    <h4>Follow Us</h4>
+    <p><i class="fab fa-x-twitter"></i> Twitter</p>
+    <p><i class="fab fa-instagram"></i> Instagram</p>
+    <p><i class="fab fa-facebook"></i> Facebook</p>
+  </div>
+  <div class="contact">
+    <h4>Contacts</h4>
+    <p>📞 (+62) 87965425</p>
+    <p>📧 customify.com</p>
+    <p>📍 Jakarta, Daerah Khusus Ibukota</p>
+  </div>
+</footer>
 
   <script src="merchant.js"></script>
 </body>
