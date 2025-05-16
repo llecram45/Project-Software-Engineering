@@ -27,6 +27,9 @@ function renderProducts() {
       <p><strong>${p.name}</strong></p>
       <p>Rp ${formatRupiah(p.price)}</p>
     `;
+    card.onclick = () => {
+      window.location.href = `ProductDesc.html?id=${p.id}`;
+    };
     productContainer.appendChild(card);
   });
 
@@ -60,6 +63,7 @@ form.onsubmit = function (e) {
 
   const name = document.getElementById('productName').value;
   const price = document.getElementById('productPrice').value;
+  const desc = document.getElementById('productDesc').value; // Ambil deskripsi
   const imageInput = document.getElementById('productImage').files[0];
 
   if (imageInput) {
@@ -75,10 +79,11 @@ form.onsubmit = function (e) {
 
     reader.onload = function () {
       const imageURL = reader.result;
-      const product = { name, price, image: imageURL };
+      const product = { name, price, desc, image: imageURL }; // Kirim juga deskripsi
 
-      saveProductToServer(product).then(() => {
-        products.push(product);
+      saveProductToServer(product).then(async (res) => {
+        const savedProduct = await res.json();
+        products.push(savedProduct);
         renderProducts();
 
         loading.style.display = 'none';
