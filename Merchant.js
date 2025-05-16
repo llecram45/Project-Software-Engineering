@@ -10,13 +10,14 @@ const closeBtn = document.getElementById('closeModalBtn');
 const notification = document.getElementById('notification');
 const loading = document.getElementById('loading');
 
-let products = JSON.parse(localStorage.getItem('products')) || [];
+let products = [];
 
 function formatRupiah(number) {
   return Number(number).toLocaleString('id-ID');
 }
 
 function renderProducts() {
+  console.log('Render dipanggil. Total produk:', products.length);
   productContainer.innerHTML = '';
   products.forEach(p => {
     const card = document.createElement('div');
@@ -32,6 +33,27 @@ function renderProducts() {
   productContainer.appendChild(openBtn);
 }
 
+async function fetchProductsFromServer() {
+  try {
+    const res = await fetch(`http://localhost:3000/products?_=${Date.now()}`);
+    if (!res.ok) throw new Error('Server error');
+    products = await res.json();
+  } catch (err) {
+    console.error('Gagal memuat produk:', err);
+    products = []; // fallback
+  } finally {
+    renderProducts(); // selalu panggil
+  }
+}
+
+function saveProductToServer(product) {
+  return fetch('http://localhost:3000/products', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(product)
+  });
+}
+
 form.onsubmit = function (e) {
   e.preventDefault();
   loading.style.display = 'block';
@@ -41,7 +63,6 @@ form.onsubmit = function (e) {
   const imageInput = document.getElementById('productImage').files[0];
 
   if (imageInput) {
-    // Validasi ukuran maksimal 1MB (1.048.576 bytes)
     if (imageInput.size > 1048576) {
       loading.style.display = 'none';
       notification.innerHTML = '❌ Ukuran gambar melebihi 1 MB!';
@@ -55,28 +76,33 @@ form.onsubmit = function (e) {
     reader.onload = function () {
       const imageURL = reader.result;
       const product = { name, price, image: imageURL };
-      products.push(product);
-      localStorage.setItem('products', JSON.stringify(products));
-      renderProducts();
 
-      loading.style.display = 'none';
-      modal.style.display = 'none';
-      form.reset();
+      saveProductToServer(product).then(() => {
+        products.push(product);
+        renderProducts();
 
-      notification.innerHTML = '✅ Produk berhasil ditambahkan!';
-      notification.style.display = 'block';
-      setTimeout(() => notification.style.display = 'none', 3000);
+        loading.style.display = 'none';
+        modal.style.display = 'none';
+        form.reset();
+
+        notification.innerHTML = '✅ Produk berhasil ditambahkan!';
+        notification.style.display = 'block';
+        setTimeout(() => notification.style.display = 'none', 3000);
+      }).catch(() => {
+        loading.style.display = 'none';
+        notification.innerHTML = '❌ Gagal menyimpan produk ke server.';
+        notification.style.display = 'block';
+        setTimeout(() => notification.style.display = 'none', 3000);
+      });
     };
 
     reader.readAsDataURL(imageInput);
   }
 };
 
-
 closeBtn.onclick = () => modal.style.display = 'none';
 window.onclick = (e) => {
   if (e.target == modal) modal.style.display = 'none';
 };
 
-// Initial load
-renderProducts();
+fetchProductsFromServer();
