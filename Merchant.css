@@ -24,8 +24,8 @@ header {
 }
 
 .logo img {
-    height: auto;
-    width: 50%;
+    height: 45px;
+    width: auto;
 }
 
 .logo span {
@@ -299,11 +299,6 @@ footer {
 .logofooter {
     margin-left: 90px;
     margin-top: 70px;
-}
-
-.logo img {
-    height: 45px;
-    width: auto;
 }
 
 .company {
