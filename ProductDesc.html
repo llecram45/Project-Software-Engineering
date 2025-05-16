@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deskripsi Produk - Customify</title>
+  <link rel="stylesheet" href="ProductDesc.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+  <header>
+        <div class="logo">
+            <img src="asset customify/logo customify.png">
+        </div>
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input type="text" id="searchInput" placeholder="Cari..." onkeyup="searchSuggestions()">
+            <div id="suggestions" class="suggestions-box"></div>
+        </div>
+        <div class="icons">
+            <a href="Cart.html"><ion-icon name="cart-outline"></ion-icon></a>
+            <a href="Profile.html"><ion-icon name="person-circle"></ion-icon></a>
+            <a href="Chat.html"><ion-icon name="chatbubbles-outline"></ion-icon></a>
+        </div>
+    </header>
+
+  <main>
+    <div class="product-container">
+      <img id="productImage" class="product-img" src="" alt="Gambar Produk" />
+      <div class="product-info">
+        <h1 id="productName">Nama Produk</h1>
+
+        <div class="rating" id="productRating">⭐ - | - Sold</div>
+
+        <div class="price" id="productPrice">Rp 0</div>
+
+        <div class="variants">
+          <p>Variant:</p>
+          <div id="productVariants"></div>
+        </div>
+
+        <div class="quantity-control">
+          <p>Quantity:</p>
+          <button id="qtyMinus">-</button>
+          <span id="productQuantity">1</span>
+          <button id="qtyPlus">+</button>
+        </div>
+
+        <div class="actions">
+          <button class="cart-btn">Add to Cart</button>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+
+        <p style="margin-top: 15px;"><a href="Merchant.html">← Kembali ke Daftar Produk</a></p>
+      </div>
+    </div>
+
+    <div class="description">
+      <h2>Deskripsi Produk</h2>
+      <p id="productDesc">Loading deskripsi...</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="logofooter">
+      <img src="asset customify/logo customify.png" alt="Customify Logo">
+      <div class="copyright">
+        <p>&copy; 2025 Customify<br>All rights reserved.</p>
+      </div>
+    </div>
+    <div class="company">
+      <h4>Company</h4>
+      <p>About Us</p>
+      <p>Produk</p>
+    </div>
+    <div class="social">
+      <h4>Follow Us</h4>
+      <p><i class="fab fa-x-twitter"></i> Twitter</p>
+      <p><i class="fab fa-instagram"></i> Instagram</p>
+      <p><i class="fab fa-facebook"></i> Facebook</p>
+    </div>
+    <div class="contact">
+      <h4>Contacts</h4>
+      <p>📞 (+62) 87965425</p>
+      <p>📧 customify.com</p>
+      <p>📍 Jakarta, Daerah Khusus Ibukota</p>
+    </div>
+  </footer>
+
+  <script src="ProductDesc.js"></script>
+</body>
+</html>
