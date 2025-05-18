@@ -74,7 +74,7 @@ app.post('/products', (req, res) => {
       id: Date.now().toString(),
       name,
       price,
-      desc: desc || '', // Simpan deskripsi (bisa kosong)
+      desc: desc || '',
       image: `/uploads/${filename}`
     };
 
@@ -84,6 +84,107 @@ app.post('/products', (req, res) => {
   } catch (err) {
     console.error('❌ Gagal menyimpan gambar:', err);
     res.status(500).send('❌ Gagal menyimpan gambar.');
+  }
+});
+
+// ---------- USER REGISTER ----------
+const usersFile = path.join(__dirname, 'users.json');
+
+// Pastikan file users.json ada
+if (!fs.existsSync(usersFile)) {
+  fs.writeFileSync(usersFile, '[]');
+}
+
+app.post('/register', (req, res) => {
+  const { email, username, phone, password } = req.body;
+
+  if (!email || !username || !phone || !password) {
+    return res.status(400).json({ message: '❌ Semua field harus diisi.' });
+  }
+
+  const users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+
+  // Cek apakah email sudah terdaftar
+  const existingUser = users.find(user => user.email === email);
+  if (existingUser) {
+    return res.status(400).json({ message: '❌ Email sudah digunakan.' });
+  }
+
+  users.push({ email, username, phone, password });
+
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
+  res.status(200).json({ message: '✅ Akun berhasil dibuat!' });
+});
+
+// ---------- USER LOGIN ----------
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ success: false, message: '❌ Email dan password harus diisi.' });
+  }
+
+  const users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+
+  const user = users.find(u => u.email === email);
+  if (!user) {
+    return res.status(401).json({ success: false, message: '❌ Email tidak terdaftar.' });
+  }
+
+  if (user.password !== password) {
+    return res.status(401).json({ success: false, message: '❌ Password salah.' });
+  }
+
+  return res.status(200).json({ success: true, message: '✅ Login berhasil!' });
+});
+
+// ---------- CART HANDLING ----------
+const cartFile = path.join(__dirname, 'cart.json');
+
+// Pastikan file cart.json ada
+if (!fs.existsSync(cartFile)) {
+  fs.writeFileSync(cartFile, '[]');
+}
+
+// Endpoint: Tambahkan item ke cart
+app.post('/cart', (req, res) => {
+  const { id, name, price, image, quantity } = req.body;
+
+  if (!id || !name || !price || !image || !quantity) {
+    return res.status(400).json({ message: '❌ Data cart tidak lengkap.' });
+  }
+
+  let cart = [];
+  try {
+    cart = JSON.parse(fs.readFileSync(cartFile, 'utf8'));
+  } catch (err) {
+    console.error('❌ Gagal membaca cart.json:', err);
+  }
+
+  const existingIndex = cart.findIndex(item => item.id === id);
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += quantity;
+  } else {
+    cart.push({ id, name, price, image, quantity });
+  }
+
+  try {
+    fs.writeFileSync(cartFile, JSON.stringify(cart, null, 2));
+    res.status(200).json({ message: '✅ Produk ditambahkan ke cart.' });
+  } catch (err) {
+    console.error('❌ Gagal menyimpan cart.json:', err);
+    res.status(500).json({ message: '❌ Gagal menyimpan cart.' });
+  }
+});
+
+// Endpoint: Ambil semua item dari cart
+app.get('/cart', (req, res) => {
+  try {
+    const cart = JSON.parse(fs.readFileSync(cartFile, 'utf8'));
+    res.json(cart);
+  } catch (err) {
+    console.error('❌ Gagal membaca cart.json:', err);
+    res.status(500).json({ message: '❌ Gagal membaca cart.' });
   }
 });
 
