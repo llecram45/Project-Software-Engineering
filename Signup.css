@@ -5,32 +5,31 @@ body {
     background: #f8f8f8;
 }
 
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 10px 20px;
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .logo img {
-    height: 45px;
-    width: auto;
+  height: 45px;
+  width: auto;
 }
 
 .logo span {
-    color: blue;
-}
-
-.icons span {
-    margin-left: 10px;
-    cursor: pointer;
+  color: blue;
 }
 
 .container {
@@ -68,7 +67,7 @@ label {
 }
 
 input {
-    width: 40%;
+    width: 97%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -83,16 +82,6 @@ input[type="text"] {
     border-radius: 20px;
 }
 
-.checkbox {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.checkbox input {
-    margin-right: 5px;
-}
-
 button {
     padding: 10px;
     margin-top: 15px;
@@ -102,6 +91,7 @@ button {
 }
 
 button[type="submit"] {
+    margin-top: 45px;
     background: blue;
     color: white;
 }
@@ -113,20 +103,71 @@ button[type="submit"] {
 }
 
 footer {
-    background: #3b5998;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+  background: #3b5998;
+  color: white;
+  padding: 20px;
+  display: flex;
+  margin-top: 97px;
+  font-size: 18px;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .info, .social, .contact {
-    width: 25%;
+  width: 25%;
+}
+
+.option a {
+  margin-top: 10%;
+}
+
+.logofooter {
+  margin-left: 90px;
+  margin-top: 70px;
+}
+
+.company {
+  margin-left: 200px;
+}
+
+.social {
+  margin-left: 200px;
+}
+
+.social a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.social a:hover {
+  color: #ddd;
+}
+
+.social i {
+  font-size: 20px;
+}
+
+.contact {
+  margin-left: 10px;
+}
+
+.logofooter .copyright-text {
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.copyright{
+  margin-left: 70px;
 }
