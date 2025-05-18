@@ -1,25 +1,34 @@
-document.getElementById("registerForm").addEventListener("submit", function (event) {
+// ✅ Ini untuk form login
+document.getElementById("loginForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (password !== confirmPassword) {
-        alert("Kata sandi tidak cocok!");
-        return;
+    try {
+        const response = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            alert("Login berhasil!");
+            window.location.href = "Home.html"; // ganti sesuai halaman dashboard kamu
+        } else {
+            alert(result.message || "Login gagal!");
+        }
+    } catch (err) {
+        alert("Terjadi kesalahan saat login.");
+        console.error(err);
     }
+});
 
-    // Simpan data ke localStorage
-    const userData = {
-        email: email,
-        phone: phone,
-        password: password,
-    };
-
-    localStorage.setItem("userData", JSON.stringify(userData));
-    alert("Pendaftaran berhasil! Silahkan login.");
-
-    window.location.href = "login.html";
+// ✅ Ini untuk tombol "Daftar sekarang?"
+document.getElementById("registerPage").addEventListener("click", function () {
+    window.location.href = "Signup.html";
 });
