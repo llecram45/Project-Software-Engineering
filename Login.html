@@ -6,11 +6,13 @@
     <title>Customify - Login</title>
     <link rel="stylesheet" href="Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="asset customify/logo customify.png" alt="Customify Logo">
+            <img src="asset customify/logo customify.png">
         </div>
     </header>
 
@@ -23,7 +25,7 @@
         </div>
         <div class="right">
             <form id="loginForm">
-                <label for="email">Alamat email atau nomor handphone yang terverifikasi</label>
+                <label for="email">Alamat email</label>
                 <input type="text" id="email" required>
 
                 <label for="password">Kata Sandi</label>
@@ -37,7 +39,7 @@
                     <a href="#" id="forgotPassword">Lupa kata sandi?</a>
                 </div>
 
-                <button type="submit">Masuk</button>
+                <button type="submit" id="loginToHome">Masuk</button>
                 <button type="button" id="registerPage">Daftar sekarang?</button>
             </form>
         </div>
@@ -69,6 +71,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="Login.js"></script>
 </body>
 </html>
