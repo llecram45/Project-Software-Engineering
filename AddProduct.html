@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+  <link rel="stylesheet" href="AddProduct.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo-tab">
+ <div class="logo">
+    <img src="asset customify/logo customify.png" alt="Logo">
+</div>
+  </header>
+    <div class="container">
+    <div class="title-bar">
+      <h2>Tambah Produk</h2>
+    </div>
+    <form>
+        <div class="form-group">
+  <label for="product-photo">Foto Produk *</label>
+  <input type="file" id="product-photo" accept="image/*" hidden>
+  <label for="product-photo" class="photo-upload">+ Tambah Foto</label>
+</div>
+
+      <div class="form-group">
+        <label for="nama">Nama *</label>
+        <input type="text" id="nama" placeholder="Masukkan Nama Produk">
+      </div>
+      <div class="form-group">
+        <label for="deskripsi">Deskripsi *</label>
+        <textarea id="deskripsi" rows="4" placeholder="Masukkan Deskripsi Produk"></textarea>
+      </div>
+      <div class="form-group">
+  <label for="kategori">Kategori *</label>
+  <div class="select-wrapper">
+    <select id="kategori" class="form-control">
+      <option value="">Pilih Kategori</option>
+      <option value="souvenir">Souvenir</option>
+      <option value="furnitur">Furnitur</option>
+      <option value="elektronik">Elektronik</option>
+      <option value="baju">Baju</option>
+      <option value="aksesoris">Aksesoris</option>
+      <option value="kerajinan">Kerajinan</option>
+      <option value="lainnya">Lainnya</option>
+    </select>
+    <span class="dropdown-icon">▼</span>
+  </div>
+</div>
+      <div class="form-group">
+        <label for="harga">Harga *</label>
+        <input type="text" id="harga">
+      </div>
+      <div class="form-group">
+        <label for="stok">Stok *</label>
+        <input type="number" id="stok" value="0">
+      </div>
+      <div class="form-group">
+        <label for="min-pembelian">Min. Jumlah Pembelian *</label>
+        <input type="number" id="min-pembelian" value="1">
+      </div>
+      <div class="form-group">
+        <label for="kirim">Kirim *</label>
+        <input type="text" id="kirim" placeholder="Ukuran">
+      </div>
+      <div class="preorder-wrapper">
+  <span class="toggle-label">Preorder</span>
+  <label class="switch">
+    <input type="checkbox" name="preorder">
+    <span class="slider"></span>
+  </label>
+</div>
+      <button class="submit-btn" type="submit">Simpan</button>
+    </form>
+  </div>
+  <footer>
+    <div class="footer-content">
+            <div class="logo">
+                <img src="asset customify/logo customify.png">
+            </div>
+            <div class="info">
+                <h4>Company</h4>
+                <p>About Us</p>
+                <p>Produk</p>
+            </div>
+            <div class="social">
+                <h4>Follow Us</h4>
+                <p>Instagram</p>
+                <p>Facebook</p>
+            </div>
+            <div class="contact">
+                <h4>Contacts</h4>
+                <p>📞 (+62) 87956425</p>
+                <p>📧 customify.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+  </footer>
+</body>
+</html>
