@@ -1,33 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
     const registerForm = document.getElementById("registerForm");
 
-    registerForm.addEventListener("submit", function (event) {
+    registerForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const email = document.getElementById("email").value;
+        const username = document.getElementById("username").value;
         const phone = document.getElementById("phone").value;
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
-        // cek input password & konfirmasi password sama
         if (password !== confirmPassword) {
             alert("Konfirmasi kata sandi tidak cocok!");
             return;
         }
 
-        // simpan inputan
-        const userData = {
-            email: email,
-            phone: phone,
-            password: password,
-        };
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, username, phone, password })
+            });
 
-        localStorage.setItem("user", JSON.stringify(userData));
-        alert("Akun berhasil dibuat! Silakan login.");
-        window.location.href = "login.html"; //redirect ke halaman login
+            const result = await response.json();
+            if (response.ok) {
+                alert("Akun berhasil dibuat! Silakan login.");
+                window.location.href = "login.html";
+            } else {
+                alert(result.message);
+            }
+        } catch (error) {
+            alert("Terjadi kesalahan saat registrasi.");
+            console.error(error);
+        }
     });
 
     document.getElementById("loginPage").addEventListener("click", function () {
-        window.location.href = "login.html";
+        window.location.href = "Login.html";
     });
 });
