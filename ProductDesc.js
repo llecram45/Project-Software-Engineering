@@ -1,68 +1,93 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  const params = new URLSearchParams(window.location.search);
-  const productId = params.get('id');
+document.addEventListener("DOMContentLoaded", () => {
+  const product = JSON.parse(localStorage.getItem("selectedProduct"));
 
-  if (!productId) {
-    alert('ID produk tidak ditemukan di URL.');
+  if (!product) {
+    document.body.innerHTML = "<p>Produk tidak ditemukan.</p>";
     return;
   }
 
-  try {
-    const res = await fetch('http://localhost:3000/products');
-    if (!res.ok) throw new Error('Gagal mengambil data produk dari server');
+  const productImage = document.getElementById("product-image");
+  const productName = document.getElementById("product-name");
+  const productPrice = document.getElementById("product-price");
+  const productRating = document.getElementById("product-rating");
+  const productDescription = document.getElementById("product-description");
+  const qtyInput = document.getElementById("quantity");
+  const addToCartBtn = document.getElementById("add-to-cart");
+  const buyNowBtn = document.getElementById("buy-now");
+  const minusBtn = document.getElementById("minus");
+  const plusBtn = document.getElementById("plus");
 
-    const products = await res.json();
-    const product = products.find(p => p.id === productId);
+  productImage.src = product.image;
+  productImage.alt = product.name;
+  productName.textContent = product.name;
 
-    if (!product) {
-      alert('Produk tidak ditemukan.');
+  const hargaNumber = parseInt(product.price.toString().replace(/\D/g, ""));
+  productPrice.textContent = `Rp ${hargaNumber.toLocaleString("id-ID")}`;
+
+  productRating.textContent = `${product.rating} ★`;
+  productDescription.textContent = product.description;
+
+  qtyInput.value = 1;
+  qtyInput.min = 1;
+
+  // Tombol "-" untuk kuantitas
+  minusBtn.addEventListener("click", () => {
+    let currentQty = parseInt(qtyInput.value);
+    if (currentQty > 1) qtyInput.value = currentQty - 1;
+  });
+
+  // Tombol "+" untuk kuantitas
+  plusBtn.addEventListener("click", () => {
+    let currentQty = parseInt(qtyInput.value);
+    qtyInput.value = currentQty + 1;
+  });
+
+  // Tombol "Add to Cart"
+  addToCartBtn.addEventListener("click", () => {
+    const quantity = parseInt(qtyInput.value);
+    if (quantity < 1) {
+      alert("Jumlah harus minimal 1.");
       return;
     }
 
-    // Gambar
-    document.getElementById('productImage').src = product.image;
-
-    // Nama
-    document.getElementById('productName').textContent = product.name;
-
-    // Harga
-    document.getElementById('productPrice').textContent = 'Rp ' + Number(product.price).toLocaleString('id-ID');
-
-    // Rating
-    document.getElementById('productRating').innerHTML = `⭐ ${product.rating ?? '4.9'} | ${product.sold ?? '0'} Sold`;
-
-    // Variants
-    const variantsContainer = document.getElementById('productVariants');
-    variantsContainer.innerHTML = '';
-    (product.variants || []).forEach(variant => {
-      const button = document.createElement('button');
-      button.textContent = variant;
-      variantsContainer.appendChild(button);
-    });
-
-    // Quantity
-    let quantity = 1;
-    const qtySpan = document.getElementById('productQuantity');
-    const minusBtn = document.getElementById('qtyMinus');
-    const plusBtn = document.getElementById('qtyPlus');
-
-    minusBtn.onclick = () => {
-      if (quantity > 1) {
-        quantity--;
-        qtySpan.textContent = quantity;
-      }
+    const productToAdd = {
+      ...product,
+      price: `Rp ${hargaNumber.toLocaleString("id-ID")}`, // simpan harga terformat
+      quantity,
+      store: "Kreativa"
     };
 
-    plusBtn.onclick = () => {
-      quantity++;
-      qtySpan.textContent = quantity;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingIndex !== -1) {
+      cart[existingIndex].quantity += quantity;
+    } else {
+      cart.push(productToAdd);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${product.name} (${quantity}) berhasil ditambahkan ke keranjang!`);
+  });
+
+  // Tombol "Buy Now"
+  buyNowBtn.addEventListener("click", () => {
+    const quantity = parseInt(qtyInput.value);
+    if (quantity < 1) {
+      alert("Jumlah harus minimal 1.");
+      return;
+    }
+
+    const productToBuy = {
+      ...product,
+      price: `Rp ${hargaNumber.toLocaleString("id-ID")}`,
+      quantity,
+      store: "Kreativa"
     };
 
-    // Deskripsi (gunakan <br> untuk baris baru)
-    document.getElementById('productDesc').innerHTML = (product.desc || 'Deskripsi belum tersedia.').replace(/\n/g, '<br>');
+    localStorage.setItem("selectedProduct", JSON.stringify(productToBuy));
+    localStorage.removeItem("checkoutItems");
 
-  } catch (error) {
-    console.error(error);
-    alert('Terjadi kesalahan saat memuat produk.');
-  }
+    window.location.href = "CheckOut.html";
+  });
 });

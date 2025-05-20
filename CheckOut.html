@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - Customify</title>
+  <link rel="stylesheet" href="CheckOut.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="asset customify/logo customify.png" alt="Logo Customify" />
+    </div>
+    <div class="search-box">
+      <ion-icon name="search-outline"></ion-icon>
+      <input type="text" placeholder="Cari..." />
+    </div>
+    <div class="icons">
+      <a href="Cart.html"><ion-icon name="cart-outline"></ion-icon></a>
+      <a href="UserProfile.html"><ion-icon name="person-circle"></ion-icon></a>
+      <a href="Chat.html"><ion-icon name="chatbubbles-outline"></ion-icon></a>
+    </div>
+  </header>
+
+  <main class="checkout-container">
+    <!-- Alamat Pengiriman -->
+    <section id="alamat-section">
+      <h2>Alamat Pengiriman</h2>
+      <div id="alamat-terpilih">Memuat alamat...</div>
+    </section>
+
+    <!-- Produk yang Dibeli -->
+    <section id="produk-section">
+      <h2>Produk yang Dibeli</h2>
+      <div id="produk-terpilih"></div>
+    </section>
+
+    <!-- Pesan dan Jasa Kirim -->
+    <section id="pengiriman-section">
+      <label for="pesan">Pesan untuk Penjual:</label>
+      <textarea id="pesan" placeholder="Opsional..."></textarea>
+
+      <label for="jasaKirim">Pilih Jasa Kirim:</label>
+      <select id="jasaKirim">
+        <optgroup label="Reguler (Cashless)">
+          <option value="Anteraja Reguler">Anteraja Reguler</option>
+          <option value="JNE Reguler">JNE Reguler</option>
+          <option value="Ninja Xpress">Ninja Xpress</option>
+        </optgroup>
+        <optgroup label="Hemat">
+          <option value="Anteraja Economy">Anteraja Economy</option>
+          <option value="S-Cepat Halu">S-Cepat Halu</option>
+        </optgroup>
+        <optgroup label="Kargo">
+          <option value="Anteraja Kargo">Anteraja Kargo</option>
+          <option value="J&T Kargo">J&T Kargo</option>
+        </optgroup>
+      </select>
+    </section>
+
+    <section id="section-pembayaran" class="section">
+      <h2>Metode Pembayaran</h2>
+
+      <label for="tipePembayaran">Pilih Tipe Pembayaran:</label>
+      <select id="tipePembayaran" required>
+        <option value="">Pilih Tipe Pembayaran</option>
+        <option value="kartu">Kartu Debit/Kredit</option>
+        <option value="transfer">Transfer Bank</option>
+      </select>
+
+      <label for="metodePembayaran">Pilih Metode Pembayaran:</label>
+      <select id="metodePembayaran" required disabled>
+        <option value="">Pilih Metode Pembayaran</option>
+      </select>
+    </section>
+
+    <!-- Ringkasan Harga -->
+    <section id="ringkasan">
+      <p>Total Produk: <span id="totalProduk">0</span></p>
+      <p>Total Harga: <span id="totalHarga">Rp 0</span></p>
+    </section>
+
+    <!-- Tombol Buat Pesanan -->
+    <button id="buatPesanan" disabled>Buat Pesanan</button>
+  </main>
+
+  <footer>
+    <div class="logofooter">
+      <img src="asset customify/logo customify.png" alt="Customify Logo" />
+      <div class="copyright">
+        <p>&copy; 2025 Customify<br />All rights reserved.</p>
+      </div>
+    </div>
+    <div class="company">
+      <h4>Company</h4>
+      <p>About Us</p>
+      <p>Produk</p>
+    </div>
+    <div class="social">
+      <h4>Follow Us</h4>
+      <p><i class="fab fa-x-twitter"></i> Twitter</p>
+      <p><i class="fab fa-instagram"></i> Instagram</p>
+      <p><i class="fab fa-facebook"></i> Facebook</p>
+    </div>
+    <div class="contact">
+      <h4>Contacts</h4>
+      <p>📞 (+62) 87965425</p>
+      <p>📧 customify.com</p>
+      <p>📍 Jakarta, Daerah Khusus Ibukota</p>
+    </div>    
+  </footer>
+
+  <script src="CheckOut.js"></script>
+</body>
+</html>
