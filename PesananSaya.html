@@ -49,14 +49,15 @@
     <main>
       <section class="main-content">
         <div class="order-tabs">
-          <a href="#" class="tab active">Semua</a>
-          <a href="#" class="tab">Belum bayar</a>
-          <a href="#" class="tab">Sedang dikemas</a>
-          <a href="#" class="tab">Dikirim</a>
-          <a href="#" class="tab">Selesai</a>
-          <a href="#" class="tab">Dibatalkan</a>
-          <a href="#" class="tab">Pengembalian</a>
+          <a href="#" class="tab active" data-status="Semua">Semua</a>
+          <a href="#" class="tab" data-status="Belum Bayar">Belum bayar</a>
+          <a href="#" class="tab" data-status="Dikemas">Sedang dikemas</a>
+          <a href="#" class="tab" data-status="Dikirim">Dikirim</a>
+          <a href="#" class="tab" data-status="Selesai">Selesai</a>
+          <a href="#" class="tab" data-status="Dibatalkan">Dibatalkan</a>
         </div>
+
+        <div id="order-list-container"></div>
 
         <div class="empty-state">
           <p class="empty-text">Belum ada pesanan di tab ini.</p>

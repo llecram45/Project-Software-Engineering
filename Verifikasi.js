@@ -1,58 +1,81 @@
+// Verifikasi.js - KODE LENGKAP
 document.addEventListener("DOMContentLoaded", () => {
-  // Ambil data user dari localStorage
-  const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {};
+    const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {};
+    const loggedInEmail = localStorage.getItem("loggedInEmail");
 
-  // Dapatkan elemen username dan foto di sidebar
-  const sidebarUsername = document.getElementById("sidebarUsername");
-  const sidebarProfileImage = document.getElementById("sidebarProfileImage");
+    const sidebarUsername = document.getElementById("sidebarUsername");
+    const sidebarProfileImage = document.getElementById("sidebarProfileImage");
 
-  // Tampilkan username dan foto jika ada
-  if (sidebarUsername) {
-    sidebarUsername.textContent = userProfile.username || "Pengguna";
-  }
+    if (sidebarUsername) {
+        sidebarUsername.textContent = userProfile.username || "Pengguna";
+    }
+    if (sidebarProfileImage) {
+        sidebarProfileImage.src = userProfile.image || "https://via.placeholder.com/80";
+    }
 
-  if (sidebarProfileImage) {
-    sidebarProfileImage.src = userProfile.image || "https://via.placeholder.com/80";
-  }
+    const form = document.getElementById("formVerifikasi");
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-  // Tangani submit form verifikasi
-  const form = document.getElementById("formVerifikasi");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Mengunggah...';
 
-      const verifNama = document.getElementById("nama").value.trim();
-      const nik = document.getElementById("nik").value.trim();
-      const fileInput = document.getElementById("fotoKTP");
-      const syaratDisetujui = document.getElementById("syarat").checked;
+            const verifNama = document.getElementById("nama").value.trim();
+            const nik = document.getElementById("nik").value.trim();
+            const fileInput = document.getElementById("fotoKTP");
+            const syaratDisetujui = document.getElementById("syarat").checked;
 
-      // Validasi
-      if (!verifNama || !nik || !syaratDisetujui || fileInput.files.length === 0) {
-        alert("Silakan lengkapi semua data dan setujui syarat & ketentuan.");
-        return;
-      }
+            if (!verifNama || !nik || !syaratDisetujui || fileInput.files.length === 0) {
+                alert("Silakan lengkapi semua data dan setujui syarat & ketentuan.");
+                submitButton.disabled = false;
+                submitButton.textContent = 'Verifikasi & Lanjut';
+                return;
+            }
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        const fotoKTPBase64 = reader.result;
+            const file = fileInput.files[0];
+            const reader = new FileReader();
 
-        // Simpan data verifikasi ke userProfile
-        userProfile.verifikasi = {
-          nama: verifNama,
-          nik: nik,
-          ktpImage: fotoKTPBase64,
-        };
+            reader.onload = async () => {
+                const fotoKTPBase64 = reader.result;
 
-        userProfile.isSeller = true;
+                const verificationData = {
+                    namaLengkap: verifNama,
+                    nik: nik,
+                    ktpImage: fotoKTPBase64,
+                    status: 'pending' // Status awal verifikasi
+                };
 
-        // Simpan kembali ke localStorage
-        localStorage.setItem("userProfile", JSON.stringify(userProfile));
+                try {
+                    const response = await fetch(`http://localhost:3000/api/users/${loggedInEmail}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ verification: verificationData })
+                    });
 
-        // Redirect ke halaman Toko
-        window.location.href = "InfoToko.html";
-      };
+                    if (!response.ok) throw new Error('Gagal mengirim data verifikasi ke server.');
+                    
+                    const updatedProfile = { ...userProfile, verification: verificationData };
+                    localStorage.setItem("userProfile", JSON.stringify(updatedProfile));
+                    
+                    alert("Data verifikasi berhasil dikirim!");
+                    window.location.href = "JasaAlamat.html"; // Arahkan ke halaman pengaturan toko
 
-      reader.readAsDataURL(fileInput.files[0]);
-    });
-  }
+                } catch (error) {
+                    alert(`Terjadi kesalahan: ${error.message}`);
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Verifikasi & Lanjut';
+                }
+            };
+
+            reader.onerror = () => {
+                alert("Gagal membaca file gambar.");
+                submitButton.disabled = false;
+                submitButton.textContent = 'Verifikasi & Lanjut';
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
 });

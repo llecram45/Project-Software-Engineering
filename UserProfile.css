@@ -221,6 +221,7 @@ h2 {
   
   form .form-group input[type="text"],
   form .form-group input[type="email"],
+  form .form-group input[type="password"],
   form .form-group input[type="file"] {
     width: 100%;
     padding: 10px 12px;

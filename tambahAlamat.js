@@ -1,34 +1,58 @@
+// tambahAlamat.js - KODE LENGKAP
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("formAlamat");
+    const form = document.getElementById("formAlamat");
+    const loggedInEmail = localStorage.getItem("loggedInEmail");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const inputs = form.querySelectorAll("input");
-    const nama = inputs[0].value.trim();
-    const telepon = inputs[1].value.trim();
-    const lokasi = inputs[2].value.trim();
-    const jalan = inputs[3].value.trim();
-    const detail = inputs[4].value.trim();
-
-    // Validasi input agar tidak kosong
-    if (!nama || !telepon || !lokasi || !jalan || !detail) {
-      alert("Mohon lengkapi semua kolom alamat.");
-      return;
+    if (!loggedInEmail) {
+        alert("Sesi Anda telah berakhir. Silakan login kembali.");
+        window.location.href = "Login.html";
+        return;
     }
 
-    const alamatBaru = { nama, telepon, lokasi, jalan, detail };
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    // Ambil data lama dari localStorage
-    const alamatList = JSON.parse(localStorage.getItem("alamatUser")) || [];
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Menyimpan...';
 
-    // Tambahkan alamat baru
-    alamatList.push(alamatBaru);
+        const inputs = form.querySelectorAll("input");
+        const nama = inputs[0].value.trim();
+        const telepon = inputs[1].value.trim();
+        const lokasi = inputs[2].value.trim();
+        const jalan = inputs[3].value.trim();
+        const detail = inputs[4].value.trim();
 
-    // Simpan kembali ke localStorage
-    localStorage.setItem("alamatUser", JSON.stringify(alamatList));
+        if (!nama || !telepon || !lokasi || !jalan) {
+            alert("Mohon lengkapi semua kolom alamat.");
+            submitButton.disabled = false;
+            submitButton.textContent = 'Simpan';
+            return;
+        }
 
-    // Redirect ke halaman Alamat.html
-    window.location.href = "Alamat.html";
-  });
+        const alamatBaru = { userEmail: loggedInEmail, nama, telepon, lokasi, jalan, detail };
+
+        // DIUBAH: Kirim data ke server
+        try {
+            const response = await fetch("http://localhost:3000/api/addresses", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(alamatBaru),
+            });
+
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.message || "Gagal menyimpan alamat di server.");
+            }
+
+            alert("Alamat baru berhasil disimpan!");
+            window.location.href = "Alamat.html";
+
+        } catch (error) {
+            console.error("Error saat menyimpan alamat:", error);
+            alert(`Terjadi kesalahan: ${error.message}`);
+            submitButton.disabled = false;
+            submitButton.textContent = 'Simpan';
+        }
+    });
 });

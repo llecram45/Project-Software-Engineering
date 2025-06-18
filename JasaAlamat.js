@@ -1,56 +1,80 @@
+// JasaAlamat.js - KODE LENGKAP
 document.addEventListener("DOMContentLoaded", () => {
-  // Sidebar (jika ingin tampilkan profil)
-  const sidebarUsername = document.getElementById("sidebarUsername");
-  const sidebarProfileImage = document.getElementById("sidebarProfileImage");
-  const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {};
+    const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {};
+    const loggedInEmail = localStorage.getItem("loggedInEmail");
 
-  if (sidebarUsername) sidebarUsername.textContent = userProfile.username || "Anonim";
-  if (sidebarProfileImage) sidebarProfileImage.src = userProfile.image || "https://via.placeholder.com/80";
+    const sidebarUsername = document.getElementById("sidebarUsername");
+    const sidebarProfileImage = document.getElementById("sidebarProfileImage");
+    if (sidebarUsername) sidebarUsername.textContent = userProfile.username || "Anonim";
+    if (sidebarProfileImage) sidebarProfileImage.src = userProfile.image || "https://via.placeholder.com/80";
 
-  // Form alamat & jasa kirim
-  const form = document.getElementById("addressForm");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    const form = document.getElementById("addressForm");
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-      const namaToko = document.getElementById("storeName").value.trim();
-      const jalan = document.getElementById("storeAddress").value.trim();
-      const kota = document.getElementById("city").value.trim();
-      const provinsi = document.getElementById("province").value.trim();
-      const kodePos = document.getElementById("postalCode").value.trim();
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Menyimpan...';
 
-      if (!namaToko || !jalan || !kota || !provinsi || !kodePos) {
-        alert("Harap lengkapi semua data alamat.");
-        return;
-      }
+            const namaToko = document.getElementById("storeName").value.trim();
+            const jalan = document.getElementById("storeAddress").value.trim();
+            const kota = document.getElementById("city").value.trim();
+            const provinsi = document.getElementById("province").value.trim();
+            const kodePos = document.getElementById("postalCode").value.trim();
 
-      // Ambil jasa pengiriman yang dicentang
-      const jasaChecked = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-        .map(cb => cb.value);
+            if (!namaToko || !jalan || !kota || !provinsi || !kodePos) {
+                alert("Harap lengkapi semua data alamat toko.");
+                submitButton.disabled = false;
+                submitButton.textContent = 'Simpan & Lanjut';
+                return;
+            }
 
-      if (jasaChecked.length === 0) {
-        alert("Pilih minimal satu jasa pengiriman.");
-        return;
-      }
+            const jasaChecked = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
 
-      // Simpan alamat & nama toko
-      const alamatTokoData = {
-        namaToko: namaToko,
-        jalan: jalan,
-        lokasi: `${kota}, ${provinsi}`,
-        detail: `Kode Pos: ${kodePos}`
-      };
+            if (jasaChecked.length === 0) {
+                alert("Pilih minimal satu jasa pengiriman.");
+                submitButton.disabled = false;
+                submitButton.textContent = 'Simpan & Lanjut';
+                return;
+            }
 
-      localStorage.setItem("alamatToko", JSON.stringify(alamatTokoData));
-      localStorage.setItem("jasaPengirimanDipilih", JSON.stringify(jasaChecked));
+            const storeProfileData = {
+                name: namaToko,
+                address: {
+                    street: jalan,
+                    city: kota,
+                    province: provinsi,
+                    postalCode: kodePos
+                },
+                shippingServices: jasaChecked
+            };
+            
+            try {
+                const response = await fetch(`http://localhost:3000/api/users/${loggedInEmail}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ storeProfile: storeProfileData })
+                });
 
-      alert("Data alamat & jasa kirim berhasil disimpan.");
-      window.location.href = "InfoToko.html";
-    });
-  }
+                if (!response.ok) throw new Error('Gagal menyimpan informasi toko.');
+
+                // Update localStorage agar InfoToko.js bisa langsung membacanya
+                const updatedProfile = { ...userProfile, storeProfile: storeProfileData };
+                localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
+
+                alert("Data alamat & jasa kirim berhasil disimpan.");
+                window.location.href = "InfoToko.html";
+
+            } catch(error) {
+                alert(`Terjadi kesalahan: ${error.message}`);
+                submitButton.disabled = false;
+                submitButton.textContent = 'Simpan & Lanjut';
+            }
+        });
+    }
 });
 
-// Fungsi tombol kembali
 function handleBack() {
-  window.history.back();
+    window.history.back();
 }

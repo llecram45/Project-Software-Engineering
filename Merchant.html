@@ -22,83 +22,79 @@
         </div>
         <div class="icons">
             <a href="Cart.html"><ion-icon name="cart-outline"></ion-icon></a>
-            <a href="Profile.html"><ion-icon name="person-circle"></ion-icon></a>
+            <a href="UserProfile.html"><ion-icon name="person-circle"></ion-icon></a>
             <a href="Chat.html"><ion-icon name="chatbubbles-outline"></ion-icon></a>
         </div>
     </header>
 
-  <section class="merchant-profile">
-    <img src="asset customify/logo customify.png" class="merchant-logo" alt="Merchant Logo">
-    <div class="merchant-info">
-      <h2>DIAMOND ACC</h2>
-      <p>Aktif 19 menit lalu</p>
-      <div class="merchant-stats">
-        <span>Produk: <b>446</b></span>
-        <span>Pengikut: <b>3.1RB</b></span>
-        <span>Penilaian: <b>4.8 (36,1RB)</b></span>
-        <span>Bergabung: <b>6 Tahun Lalu</b></span>
-      </div>
-      <div class="merchant-actions">
-        <button class="follow-btn">+ Ikuti</button>
-        <button class="chat-btn">Chat</button>
-      </div>
+    <section class="merchant-profile">
+        <img id="merchantLogo" src="https://via.placeholder.com/100" class="merchant-logo" alt="Logo Toko">
+        <div class="merchant-info">
+            <h2 id="merchantName">Memuat Nama Toko...</h2>
+            <p>Aktif 19 menit lalu</p> <div class="merchant-stats">
+                <span>Produk: <b id="merchantProductCount">0</b></span>
+                <span>Pengikut: <b>0</b></span> <span>Penilaian: <b>N/A</b></span> <span>Bergabung: <b id="merchantJoinDate">...</b></span>
+            </div>
+            <div class="merchant-actions">
+                <button class="follow-btn">+ Ikuti</button>
+                <button class="chat-btn">Chat</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-list">
+        <h2>Produk Unggulan</h2>
+        <div class="products" id="productContainer">
+            </div>
+    </section>
+
+    <div id="uploadModal" class="modal">
+        <div class="modal-content styled-modal">
+            <span id="closeModalBtn" class="close">&times;</span>
+            <h3>Tambah Produk Baru</h3>
+            <form id="uploadForm">
+                <label>Nama Produk</label><br>
+                <input type="text" id="productName" placeholder="Masukkan Nama Produk.." required><br><br>
+                <label>Harga Produk (Rp)</label><br>
+                <input type="number" id="productPrice" placeholder="Masukkan Harga Produk.." required><br><br>
+                <label>Deskripsi Produk</label><br>
+                <textarea id="productDesc" placeholder="Masukkan Deskripsi Produk..." required></textarea><br><br>
+                <label>Gambar Produk (max. 1 MB)</label><br>
+                <input type="file" id="productImage" accept="image/*" required><br><br>
+                <button type="submit">Tambahkan Produk</button>
+            </form>
+            <div id="loading" class="loading" style="display:none;">Loading...</div>
+        </div>
     </div>
-  </section>
 
-  <section class="product-list">
-    <h2>Produk Unggulan</h2>
-    <div class="products" id="productContainer"></div>
-  </section>
+    <div id="notification" class="notification" style="display: none;"></div>
 
-  <!-- Modal -->
-  <div id="uploadModal" class="modal">
-    <div class="modal-content styled-modal">
-      <span id="closeModalBtn" class="close">&times;</span>
-      <h3>Tambah Produk Baru</h3>
-      <form id="uploadForm">
-        <label>Nama Produk</label><br>
-        <input type="text" id="productName" placeholder="Masukkan Nama Produk.." required><br><br>
-        <label>Harga Produk (Rp)</label><br>
-        <input type="number" id="productPrice" placeholder="Masukkan Harga Produk.." required><br><br>
-        <label>Deskripsi Produk</label><br>
-        <textarea id="productDesc" placeholder="Masukkan Deskripsi Produk..." required></textarea><br><br>
-        <label>Gambar Produk (max. 1 MB)</label><br>
-        <input type="file" id="productImage" accept="image/*" required><br><br>
-        <button type="submit">Tambahkan Produk</button>
-      </form>
-      <div id="loading" class="loading" style="display:none;">Loading...</div>
-    </div>
-  </div>
+    <footer>
+        <div class="logofooter">
+            <img src="asset customify/logo customify.png" alt="Customify Logo">
+            <div class="copyright">
+                <p>&copy; 2025 Customify<br>All rights reserved.</p>
+            </div>
+        </div>
+        <div class="company">
+            <h4>Company</h4>
+            <p>About Us</p>
+            <p>Produk</p>
+        </div>
+        <div class="social">
+            <h4>Follow Us</h4>
+            <p><i class="fab fa-x-twitter"></i> Twitter</p>
+            <p><i class="fab fa-instagram"></i> Instagram</p>
+            <p><i class="fab fa-facebook"></i> Facebook</p>
+        </div>
+        <div class="contact">
+            <h4>Contacts</h4>
+            <p>📞 (+62) 87965425</p>
+            <p>📧 customify.com</p>
+            <p>📍 Jakarta, Daerah Khusus Ibukota</p>
+        </div>
+    </footer>
 
-  <!-- Notifikasi -->
-  <div id="notification" class="notification" style="display: none;"></div>
-
-<footer>
-  <div class="logofooter">
-    <img src="asset customify/logo customify.png" alt="Customify Logo">
-    <div class="copyright">
-      <p>&copy; 2025 Customify<br>All rights reserved.</p>
-    </div>
-  </div>
-  <div class="company">
-    <h4>Company</h4>    
-    <p>About Us</p>
-    <p>Produk</p>
-  </div>
-  <div class="social">
-    <h4>Follow Us</h4>
-    <p><i class="fab fa-x-twitter"></i> Twitter</p>
-    <p><i class="fab fa-instagram"></i> Instagram</p>
-    <p><i class="fab fa-facebook"></i> Facebook</p>
-  </div>
-  <div class="contact">
-    <h4>Contacts</h4>
-    <p>📞 (+62) 87965425</p>
-    <p>📧 customify.com</p>
-    <p>📍 Jakarta, Daerah Khusus Ibukota</p>
-  </div>
-</footer>
-
-  <script src="merchant.js"></script>
+    <script src="merchant.js"></script>
 </body>
 </html>
