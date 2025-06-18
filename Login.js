@@ -18,7 +18,16 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
         if (response.ok && result.success) {
             alert("Login berhasil!");
-            window.location.href = "Home.html"; // ganti sesuai halaman dashboard kamu
+
+            // Ambil data user lengkap dari server
+            const userResponse = await fetch(`http://localhost:3000/api/users/${email}`);
+            const userData = await userResponse.json();
+
+            // Simpan ke localStorage
+            localStorage.setItem("userProfile", JSON.stringify(userData));
+            localStorage.setItem("loggedInEmail", email);
+
+            window.location.href = "Home.html";
         } else {
             alert(result.message || "Login gagal!");
         }

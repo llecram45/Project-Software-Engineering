@@ -1,68 +1,88 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const savedProfile = JSON.parse(localStorage.getItem("userProfile")) || {};
-    const loginData = JSON.parse(localStorage.getItem("loginData")) || {};
+  const email = localStorage.getItem("loggedInEmail");
+  if (!email) {
+    alert("❌ Anda belum login.");
+    window.location.href = "Login.html";
+    return;
+  }
 
-    // Pre-fill form fields
-    document.getElementById("email").value = loginData.email || "";
-    document.getElementById("password").value = loginData.password || "";
-    document.getElementById("username").value = savedProfile.username || "";
-    document.getElementById("nama").value = savedProfile.nama || "";
-    document.getElementById("tanggalLahir").value = savedProfile.tanggalLahir || "";
+  fetch(`http://localhost:3000/api/users/${email}`)
+    .then(res => res.json())
+    .then(user => {
+      document.getElementById("email").value = user.email || "";
+      document.getElementById("password").value = "********";
+      document.getElementById("username").value = user.username || "";
+      document.getElementById("nama").value = user.nama || "";
+      document.getElementById("toko").value = user.toko || "";
+      document.getElementById("tanggalLahir").value = user.tanggalLahir || "";
 
-    // Gender
-    if (savedProfile.gender) {
-        const genderInput = document.querySelector(`input[name="gender"][value="${savedProfile.gender}"]`);
+      if (user.gender) {
+        const genderInput = document.querySelector(`input[name="gender"][value="${user.gender}"]`);
         if (genderInput) genderInput.checked = true;
-    }
+      }
 
-    // Profile image
-    if (savedProfile.image) {
-        document.getElementById("previewImage").src = savedProfile.image;
-        document.getElementById("sidebarProfileImage").src = savedProfile.image;
-    }
+      if (user.image) {
+        document.getElementById("previewImage").src = user.image;
+        document.getElementById("sidebarProfileImage").src = user.image;
+      }
 
-    // Sidebar username
-    document.getElementById("sidebarUsername").textContent = savedProfile.username || "Anonim";
-
-    // Upload image
-    document.getElementById("profileImage").addEventListener("change", function (e) {
-        const file = e.target.files[0];
-        if (file && file.size < 1024 * 1024) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const imageData = e.target.result;
-                document.getElementById("previewImage").src = imageData;
-                document.getElementById("sidebarProfileImage").src = imageData;
-                savedProfile.image = imageData;
-            };
-            reader.readAsDataURL(file);
-        } else {
-            alert("Ukuran file terlalu besar! Maksimum 1MB.");
-            e.target.value = ""; 
-        }
+      document.getElementById("sidebarUsername").textContent = user.username || "Anonim";
+    })
+    .catch(err => {
+      console.error("Gagal mengambil data user:", err);
     });
 
-    // Submit form
-    document.getElementById("profileForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+  let profileImageBase64 = null;
 
-        // Simpan ke userProfile
-        savedProfile.username = document.getElementById("username").value;
-        savedProfile.nama = document.getElementById("nama").value;
-        savedProfile.gender = document.querySelector('input[name="gender"]:checked')?.value || "";
-        savedProfile.tanggalLahir = document.getElementById("tanggalLahir").value;
-        savedProfile.image = document.getElementById("previewImage").src;
+  document.getElementById("profileImage").addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (file && file.size < 1024 * 1024) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        profileImageBase64 = e.target.result;
+        document.getElementById("previewImage").src = profileImageBase64;
+        document.getElementById("sidebarProfileImage").src = profileImageBase64;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("Ukuran file terlalu besar! Maksimum 1MB.");
+      e.target.value = "";
+    }
+  });
 
-        localStorage.setItem("userProfile", JSON.stringify(savedProfile));
+  document.getElementById("profileForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        // Simpan ke loginData juga kalau password/email diubah
-        loginData.email = document.getElementById("email").value;
-        loginData.password = document.getElementById("password").value;
-        localStorage.setItem("loginData", JSON.stringify(loginData));
+    const updatedProfile = {
+        username: document.getElementById("username").value,
+        nama: document.getElementById("nama").value,
+        gender: document.querySelector('input[name="gender"]:checked')?.value || "",
+        tanggalLahir: document.getElementById("tanggalLahir").value,
+        image: profileImageBase64 || document.getElementById("previewImage").src
+    };
 
-        // Update sidebar
-        document.getElementById("sidebarUsername").textContent = savedProfile.username;
+    const passwordInput = document.getElementById("password").value;
+    if (passwordInput) updatedProfile.password = passwordInput;
 
-        alert("Profil berhasil disimpan!");
+
+    fetch(`http://localhost:3000/api/users/${email}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedProfile)
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert("✅ Profil berhasil diperbarui.");
+      document.getElementById("sidebarUsername").textContent = updatedProfile.username;
+
+      localStorage.setItem("userProfile", JSON.stringify({
+      username: updatedProfile.username,
+      image: updatedProfile.image
+     }));
+    })
+    .catch(err => {
+      console.error("❌ Gagal memperbarui profil:", err);
+      alert("❌ Gagal memperbarui profil.");
     });
+  });
 });

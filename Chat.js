@@ -32,4 +32,3 @@ document.addEventListener('DOMContentLoaded', () => {
   link.href = 'chat.css';
   document.head.appendChild(link);
 });
-

@@ -410,3 +410,171 @@ body {
 .container {
   padding: 0;
 }
+
+.main-content .order-card { /* Ditambahkan .main-content untuk spesifisitas jika perlu */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Jarak antar kartu pesanan */
+    padding: 15px 20px; /* Padding dalam kartu */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Shadow halus */
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0; /* Garis pemisah tipis */
+    margin-bottom: 12px;
+}
+
+.order-card-header .order-id {
+    font-size: 0.9em;
+    color: #333;
+    font-weight: 500; /* Sedikit tebal */
+}
+.order-card-header .order-date {
+    font-size: 0.85em;
+    color: #777; /* Warna abu-abu */
+    margin-left: 10px;
+}
+
+.order-status {
+    font-weight: 600; /* Lebih tebal */
+    padding: 4px 10px;
+    border-radius: 12px; /* Lebih bulat */
+    font-size: 0.85em;
+    text-transform: capitalize; /* Huruf kapital di awal kata */
+    border: 1px solid transparent; /* Border default transparan */
+}
+
+/* Warna Status (sesuai dengan PesananSaya.js) */
+.status-belum-bayar { background-color: #FFF3E0; color: #FF9800; border-color: #FFCC80; }
+.status-dikemas { background-color: #E3F2FD; color: #2196F3; border-color: #90CAF9; }
+.status-dikirim { background-color: #E8F5E9; color: #4CAF50; border-color: #A5D6A7; }
+.status-selesai { background-color: #F3E5F5; color: #9C27B0; border-color: #CE93D8; }
+.status-dibatalkan { background-color: #FFEBEE; color: #F44336; border-color: #EF9A9A; }
+
+
+.order-card-body .order-item {
+    display: flex;
+    gap: 15px; /* Jarak antara gambar dan detail item */
+    align-items: flex-start; /* Item rata atas */
+    padding: 12px 0; /* Padding atas bawah untuk setiap item */
+    border-bottom: 1px dashed #f0f0f0; /* Pemisah antar item */
+}
+.order-card-body .order-item:last-child {
+    border-bottom: none; /* Item terakhir tidak ada border bawah */
+    padding-bottom: 0;
+}
+
+.order-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+    border-radius: 6px; /* Sudut sedikit bulat */
+    border: 1px solid #eee; /* Border tipis untuk gambar */
+}
+
+.order-item-details {
+    flex-grow: 1; /* Agar detail item mengambil sisa ruang */
+}
+.order-item-details .item-name { margin: 0 0 4px 0; font-size: 1em; color: #222; }
+.order-item-details .item-store,
+.order-item-details .item-quantity {
+    font-size: 0.85em;
+    color: #666;
+    margin: 2px 0; /* Sedikit spasi vertikal */
+}
+
+.order-item .item-price {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95em;
+    min-width: 100px; /* Agar harga rata dan tidak berantakan jika angkanya beda panjang */
+    text-align: right; /* Harga rata kanan */
+}
+
+.order-card-summary {
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 12px;
+    text-align: right; /* Ringkasan harga rata kanan */
+}
+.order-card-summary p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+.order-card-summary .total-harga-pesanan {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #d9534f; /* Warna aksen untuk total */
+}
+
+.order-card-actions {
+    padding-top: 15px;
+    text-align: right; /* Tombol rata kanan */
+    margin-top: 10px;
+    border-top: 1px solid #f0f0f0; /* Pemisah sebelum tombol */
+}
+
+.btn-action {
+    background-color: #f8f9fa; /* Warna dasar netral untuk tombol */
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 7px 14px; /* Padding tombol */
+    text-align: center;
+    font-size: 0.85em; /* Ukuran font tombol */
+    border-radius: 5px; /* Sudut tombol bulat */
+    cursor: pointer;
+    margin-left: 8px; /* Jarak antar tombol */
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s; /* Transisi halus */
+}
+.btn-action:hover {
+    background-color: #e9ecef; /* Warna hover */
+    border-color: #bbb;
+}
+
+/* Styling spesifik untuk tombol aksi (opsional, bisa disesuaikan) */
+.btn-bayar { background-color: #ffc107; border-color: #ffc107; color: #212529; }
+.btn-bayar:hover { background-color: #e0a800; border-color: #d39e00; }
+
+.btn-lacak, .btn-info-pengiriman { background-color: #17a2b8; border-color: #17a2b8; color: white; }
+.btn-lacak:hover, .btn-info-pengiriman:hover { background-color: #138496; border-color: #117a8b; }
+
+.btn-diterima { background-color: #28a745; border-color: #28a745; color: white; }
+.btn-diterima:hover { background-color: #218838; border-color: #1e7e34; }
+
+.btn-detail { background-color: #6c757d; border-color: #6c757d; color: white; }
+.btn-detail:hover { background-color: #5a6268; border-color: #545b62; }
+
+@media (max-width: 768px) {
+    .main-content .order-card-header,
+    .main-content .order-card-actions { /* Target elemen yang lebih spesifik */
+        flex-direction: column;
+        align-items: flex-start; /* Tombol dan header rata kiri di mobile */
+    }
+    .main-content .order-card-header .order-status {
+        margin-top: 8px; /* Jarak status dari info pesanan */
+    }
+    .main-content .order-card-actions .btn-action {
+        margin-left: 0; /* Hapus margin kiri di mobile */
+        margin-top: 8px; /* Jarak antar tombol vertikal */
+        display: block; /* Tombol jadi full width */
+        width: 100%;
+        box-sizing: border-box; /* Agar padding tidak menambah lebar */
+    }
+    .main-content .order-card-actions .btn-action:first-child {
+        margin-top: 0; /* Tombol pertama tidak ada margin atas */
+    }
+    .main-content .order-item { /* Target lebih spesifik */
+        flex-direction: column; /* Item jadi vertikal di mobile */
+        align-items: flex-start;
+    }
+    .main-content .order-item .item-price { /* Target lebih spesifik */
+        text-align: left; /* Harga rata kiri di mobile */
+        margin-top: 5px;
+    }
+}

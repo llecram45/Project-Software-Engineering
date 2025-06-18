@@ -1,52 +1,59 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const alamatToko = JSON.parse(localStorage.getItem("alamatToko")) || {};
-  const loginData = JSON.parse(localStorage.getItem("loginData")) || {};
-  const alamatUser = JSON.parse(localStorage.getItem("alamatUser")) || {};
-  const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {};
+// InfoToko.js - KODE LENGKAP (VERSI DIPERBAIKI)
+document.addEventListener("DOMContentLoaded", async () => {
+    const userProfileFromStorage = JSON.parse(localStorage.getItem("userProfile")) || {};
+    const loggedInEmail = localStorage.getItem("loggedInEmail");
 
-  // Nama Toko
-  const namaTokoInput = document.getElementById("namaToko");
-  if (namaTokoInput) {
-    namaTokoInput.value = alamatToko.namaToko || "";
-    namaTokoInput.readOnly = true; // Buat tidak bisa diubah
-  }
+    // Elemen UI
+    const namaTokoInput = document.getElementById("namaToko");
+    const emailInput = document.getElementById("email");
+    const teleponInput = document.getElementById("telepon");
+    const sidebarUsername = document.getElementById("sidebarUsername");
+    const sidebarProfileImage = document.getElementById("sidebarProfileImage");
+    const form = document.getElementById("formInformasiToko");
 
-  // Email dan Telepon
-  const emailInput = document.getElementById("email");
-  const teleponInput = document.getElementById("telepon");
+    // Tampilkan data dari localStorage dulu untuk UI cepat
+    if (sidebarUsername) sidebarUsername.textContent = userProfileFromStorage.username || "Anonim";
+    if (sidebarProfileImage) sidebarProfileImage.src = userProfileFromStorage.image || "https://via.placeholder.com/80";
+    if (emailInput) emailInput.value = loggedInEmail || "";
 
-  if (emailInput) {
-    emailInput.value = loginData.email || "";
-    emailInput.readOnly = true;
-  }
+    if (!loggedInEmail) {
+        alert("Sesi tidak ditemukan, silakan login kembali.");
+        window.location.href = 'Login.html';
+        return;
+    }
 
-  if (teleponInput) {
-    teleponInput.value = alamatUser.telepon || "";
-    teleponInput.readOnly = true;
-  }
+    // Ambil data lengkap dan terbaru dari server untuk memastikan data akurat
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/${loggedInEmail}`);
+        if (!response.ok) throw new Error('Gagal memuat data toko.');
+        
+        const user = await response.json();
 
-  // Sidebar profil
-  const sidebarUsername = document.getElementById("sidebarUsername");
-  const sidebarProfileImage = document.getElementById("sidebarProfileImage");
+        // Update localStorage dengan data terbaru jika perlu
+        localStorage.setItem('userProfile', JSON.stringify(user));
 
-  if (sidebarUsername) sidebarUsername.textContent = userProfile.username || "Anonim";
-  if (sidebarProfileImage) sidebarProfileImage.src = userProfile.image || "https://via.placeholder.com/80";
+        // Isi form dengan data dari server
+        if (namaTokoInput && user.storeProfile && user.storeProfile.name) {
+            namaTokoInput.value = user.storeProfile.name;
+        } else if (namaTokoInput) {
+            namaTokoInput.placeholder = "Nama toko belum diatur";
+        }
+        
+        if (teleponInput) {
+            teleponInput.value = user.phone || "";
+        }
 
-  // Form submit
-  const form = document.getElementById("formInformasiToko");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const tokoData = {
-        namaToko: namaTokoInput.value,
-        email: emailInput.value,
-        telepon: teleponInput.value,
-        alamat: alamatToko,
-      };
-
-      localStorage.setItem("tokoData", JSON.stringify(tokoData));
-      window.location.href = "AddProduct.html";
-    });
-  }
+    } catch (error) {
+        console.error("Gagal fetch info toko:", error);
+        alert(`Gagal memuat data toko dari server.`);
+    }
+    
+    // DIUBAH: Logika tombol 'Lanjut' sekarang HANYA untuk navigasi
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            // Tidak ada proses simpan data, langsung arahkan ke halaman merchant
+            window.location.href = "Merchant.html";
+        });
+    }
 });

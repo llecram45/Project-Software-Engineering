@@ -36,36 +36,38 @@
     <div class="container">
     <h2>Tambah Kartu Kredit Baru</h2>
     <div class="info-box">
-      <p><strong>✅ Informasi kartu Anda terlindungi</strong><br>Kami bekerja sama dengan penyedia pembayaran terpercaya. Shopee tidak akan mengakses info kartu Anda.</p>
+      <p><strong>✅ Informasi kartu Anda terlindungi</strong>
+        <br>Kami bekerja sama dengan penyedia pembayaran terpercaya.
+        Kami tidak akan mengakses info kartu Anda.</p>
     </div>
 
-    <form id="formKartu">
+    <form id="cardForm">
       <h3>Rincian Kartu</h3>
 
       <label>Nomor Kartu</label>
-      <input type="text" maxlength="19" placeholder="1234 5678 9012 3456" required />
+      <input type="text" id="nomorKartu" maxlength="19" placeholder="1234 5678 9012 3456" required />
 
       <div class="row">
         <div>
           <label>Tanggal Kedaluwarsa (BB/TT)</label>
-          <input type="text" placeholder="MM/YY" required />
+          <input type="text" id="masaBerlaku" placeholder="MM/YY" required />
         </div>
         <div>
           <label>CVV</label>
-          <input type="text" maxlength="3" placeholder="123" required />
+          <input type="text" id="cvv" maxlength="3" placeholder="123" required />
         </div>
       </div>
 
       <label>Nama di Kartu</label>
-      <input type="text" placeholder="Nama lengkap di kartu" required />
+      <input type="text" id="namaKartu" placeholder="Nama lengkap di kartu" required />
 
       <h3>Alamat Tagihan</h3>
 
       <label>Alamat</label>
-      <textarea placeholder="Jalan, No, RT/RW, Kecamatan, Kota" required></textarea>
+      <textarea id="alamat" placeholder="Jalan, No, RT/RW, Kecamatan, Kota" required></textarea>
 
       <label>Kode Pos</label>
-      <input type="text" maxlength="5" placeholder="12345" required />
+      <input type="text" id="kodePos" maxlength="5" placeholder="12345" required />
 
       <div class="checkbox">
         <input type="checkbox" id="setuju" required />
@@ -79,31 +81,31 @@
     </form>
   </div>
 
-    <footer>
-        <div class="logofooter">
-            <img src="asset customify/logo customify.png" alt="Customify Logo">
-            <div class="copyright">
-                <p>&copy; 2025 Customify<br>All rights reserved.</p>
-            </div>
-        </div>
-        <div class="company">
-            <h4>Company</h4>    
-            <p>About Us</p>
-            <p>Produk</p>
-        </div>
-        <div class="social">
-            <h4>Follow Us</h4>
-            <p><i class="fab fa-x-twitter"></i> Twitter</p>
-            <p><i class="fab fa-instagram"></i> Instagram</p>
-            <p><i class="fab fa-facebook"></i> Facebook</p>
-        </div>
-        <div class="contact">
-            <h4>Contacts</h4>
-            <p>📞 (+62) 87965425</p>
-            <p>📧 customify.com</p>
-            <p>📍 Jakarta, Daerah Khusus Ibukota</p>
-        </div>
-    </footer>
+  <footer>
+    <div class="logofooter">
+      <img src="asset customify/logo customify.png" />
+      <div class="copyright">
+        <p>&copy; 2025 Customify<br />All rights reserved.</p>
+      </div>
+    </div>
+    <div class="company">
+      <h4>Company</h4>
+      <p>About Us</p>
+      <p>Produk</p>
+    </div>
+    <div class="social">
+      <h4>Follow Us</h4>
+      <p><i class="fab fa-x-twitter"></i> Twitter</p>
+      <p><i class="fab fa-instagram"></i> Instagram</p>
+      <p><i class="fab fa-facebook"></i> Facebook</p>
+    </div>
+    <div class="contact">
+      <h4>Contacts</h4>
+      <p>📞 (+62) 87965425</p>
+      <p>📧 customify.com</p>
+      <p>📍 Jakarta, DKI Jakarta</p>
+    </div>
+  </footer>
 
     <script src="tambahKartu.js"></script>
 </body>

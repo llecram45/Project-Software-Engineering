@@ -12,11 +12,15 @@
         <div class="logo">
             <img src="asset customify/logo customify.png">
         </div>
-        <input type="text" placeholder="Cari...">
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input type="text" id="searchInput" placeholder="Cari..." onkeyup="searchSuggestions()">
+            <div id="suggestions" class="suggestions-box"></div>
+        </div>
         <div class="icons">
-            <span>🛒</span> <!-- Cart -->
-            <span>👤</span> <!-- User -->
-            <span>💬</span> <!-- Chat -->
+            <a href="Cart.html"><ion-icon name="cart-outline"></ion-icon></a>
+            <a href="UserProfile.html"><ion-icon name="person-circle"></ion-icon></a>
+            <a href="Chat.html"><ion-icon name="chatbubbles-outline"></ion-icon></a>
         </div>
     </header>
     
